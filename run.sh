@@ -144,4 +144,3 @@ read play
       fi
 }
 menu
-#coded by Machine404 Don't copy this code without giving me credit.
