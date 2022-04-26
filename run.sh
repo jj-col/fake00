@@ -31,52 +31,6 @@ echo -e ${GREEN}"                                                         #"
 echo -e ${RED}"##########################################################"
    
 }
-resize -s 38 70 > /dev/null
-function dependencies(){
-echo -e ${PINK}
-cat /etc/issue.net
-
-
-echo "Checking dependencies configuration " 
-sleep 1
-if [[ "$(ping -c 1 8.8.8.8 | grep '100% packet loss' )" != "" ]]; then
-  echo ${RED}"No Internet Connection"
-  exit 1
-  else
-  echo -e ${GREEN} "\n[ ✔ ] Internet.............${GREEN}[ working ]"
-fi
-sleep 1
-which curl > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e ${GREEN} "\n[ ✔ ] curl.............${GREEN}[ found ]"
-else
-echo -e $red "[ X ] curl  -> ${RED}not found "
-echo -e ${YELLOW} "[ ! ] Installing curl "
-sudo apt-get install curl
-echo -e ${BLUE} "[ ✔ ] Done installing ...."
-fi
-sleep 1
-which git > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e ${GREEN} "\n[ ✔ ] git.............${GREEN}[ found ]"
-else
-echo -e $red "[ X ] git  -> ${RED}not found "
-echo -e ${YELLOW} "[ ! ] Installing git "
-pkg update && pkg upgrade  > /dev/null 2>&1
-pkg install git > /dev/null 2>&1
-echo -e ${BLUE} "[ ✔ ] Done installing ...."
-which git > /dev/null 2>&1
-sleep 1
-fi
-sleep 1
-}
-
-function printmsg(){
-echo  -e ${RED}" Exiting FAKE-SMS SENDER... "
-sleep 1
-echo -e ${ORANGE}" See You Next Time............."
-exit
-}
 
 function instruction(){
 
